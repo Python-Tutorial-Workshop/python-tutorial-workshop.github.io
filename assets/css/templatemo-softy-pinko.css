@@ -306,6 +306,9 @@ body {
 a.main-button-slider {
   font-size: 13px;
   border-radius: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #fff;
   padding: 12px 20px;
   background-color: #FFD43B;
   text-transform: uppercase;
@@ -319,6 +322,7 @@ a.main-button-slider {
 
 a.main-button-slider:hover {
   background-color: #4B8BBE;
+
 }
 
 a.main-button {
