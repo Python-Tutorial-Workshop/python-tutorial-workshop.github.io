@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
-
-  <head>
+<html lang="zh-TW">
+<head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FYKCKYZEKC"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -10,398 +9,497 @@
         gtag('config', 'G-FYKCKYZEKC');
     </script>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="MarsW">
     <link href="assets/images/logo.png" rel="icon">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
-
-    <title>Python 入門工作坊</title>
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
-
-    <link rel="stylesheet" href="assets/css/templatemo-softy-pinko.css">
-
-    </head>
+    <title>Python 入門工作坊 - 從零開始建立基礎</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <body>
+    <style>
+        /* 自定義樣式 */
+        :root {
+            --primary-color: #3776ab; /* Python 藍 */
+            --secondary-color: #ffd343; /* Python 黃 */
+            --text-color: #333;
+        }
 
-    <!-- ***** Welcome Area Start ***** -->
-    <div class="welcome-area" id="welcome">
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft JhengHei", sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-        <!-- ***** Header Text Start ***** -->
-        <div class="header-text">
+        /* --- 導覽列樣式調整 (藍底白字) --- */
+        .navbar-custom {
+            background-color: var(--primary-color);
+        }
+        
+        /* 連結文字顏色改為白色 */
+        .navbar-custom .nav-link {
+            color: white !important;
+            font-weight: 500;
+        }
+
+        /* Hover 效果：文字變黃 */
+        .navbar-custom .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+
+        /* 手機版選單漢堡按鈕顏色調整 (白) */
+        .navbar-dark .navbar-toggler {
+            border-color: rgba(255,255,255,0.5);
+        }
+        .navbar-dark .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* --- Hero 按鈕樣式 (固定黃底黑字) --- */
+        .btn-action {
+            background-color: var(--secondary-color) !important;
+            border-color: var(--secondary-color) !important;
+            color: #333 !important;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-action:hover {
+            background-color: #e0b936 !important;
+            border-color: #e0b936 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        }
+        
+        /* --- Nav CTA Button 預設樣式 (非固定時：白字連結) --- */
+        .nav-cta-btn {
+            /* 讓按鈕在藍底上表現得像一般白字連結 */
+            background-color: transparent !important;
+            border-color: transparent !important;
+            color: white !important;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: none !important;
+            /* 調整 padding 以符合一般 nav-link 的樣式 */
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+        }
+        
+        /* --- Nav CTA Button 固定時樣式 (is-stuck 時：黃底黑字) --- */
+        .navbar-custom.is-stuck .nav-cta-btn {
+            /* 繼承 Hero 按鈕的黃色樣式 */
+            background-color: var(--secondary-color) !important;
+            border-color: var(--secondary-color) !important;
+            color: #333 !important; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            /* 確保按鈕外觀 */
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+        }
+
+        .navbar-custom.is-stuck .nav-cta-btn:hover {
+            background-color: #e0b936 !important;
+            border-color: #e0b936 !important;
+            transform: translateY(0);
+        }
+        
+        /* Hero 區塊 */
+        .hero-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero-title {
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+
+        /* 特色區塊 Icon */
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* 章節列表 */
+        .chapter-list .list-group-item {
+            border: none;
+            border-left: 4px solid var(--secondary-color);
+            margin-bottom: 5px;
+            background-color: #f8f9fa;
+            transition: 0.3s;
+        }
+        .chapter-list .list-group-item:hover {
+            background-color: #e9ecef;
+            padding-left: 20px;
+        }
+
+        /* 數據成果區塊 */
+        .stats-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        /* 區塊通用 */
+        section {
+            padding: 80px 0;
+            scroll-margin-top: 80px; 
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: bold;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 10px auto;
+        }
+
+        /* FAQ 手風琴 */
+        .accordion-button:not(.collapsed) {
+            background-color: #e7f1ff;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section d-flex align-items-center">
+        <div class="container">
+            <h1 class="display-4 hero-title">Python 入門工作坊<br><span style="font-size: 0.7em; color:#555;">利用一個週末建立 Python 基礎</span></h1>
+            <p class="hero-desc mt-4">
+                從零開始，透過大量實務範例與練習，有講師及 AI 學習夥伴的即時協助，<br>
+                讓你實際動手加深程式邏輯的基礎概念，體驗更多 Python 的應用！<br>
+                沒有程式經驗也不用擔心，而有基礎的更可以熟悉這些知識語法如何實踐～
+            </p>
+            <a href="#events" class="btn btn-action btn-lg mt-4 shadow">立即報名</a>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow-sm">
+        <div class="container">
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item mx-3"><a class="nav-link" href="#curriculum">工作坊內容</a></li>
+                    <li class="nav-item mx-3"><a class="nav-link" href="#about">運作方式</a></li>
+                    <li class="nav-item mx-3"><a class="nav-link" href="#achievements">成果</a></li>
+                    <li class="nav-item mx-3"><a class="nav-link" href="#reviews">學員回饋</a></li>
+                    <li class="nav-item mx-3"><a class="nav-link" href="#faq">常見問題</a></li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-cta-btn btn px-4 rounded-pill" href="#events">近期活動</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">工作坊特色</h2>
+            <div class="row text-center g-4">
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <i class="fas fa-laptop-code feature-icon"></i>
+                        <h4>實務範例與練習</h4>
+                        <p class="text-muted">講義的內容與練習題都與實務相關，跳脫枯燥的語法，認識生活中的科技服務是如何用程式實作的。透過練習題動手，加深新知識觀念應用。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <i class="fas fa-users feature-icon"></i>
+                        <h4>講師即時協助</h4>
+                        <p class="text-muted">擺脫線上課程一個人學習的孤獨及卡關無人可詢問的狀況，我們有經過扎實培訓的講師，在工作坊的過程中及時給予各種幫助。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <i class="fas fa-robot feature-icon"></i>
+                        <h4>AI 學習夥伴</h4>
+                        <p class="text-muted">學會運用 ChatGPT，成為你 24 小時不間斷的學習夥伴。讓你理解如何與 AI 對話，請它協助你引導你完成練習題、理解程式概念。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="curriculum" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">工作坊內容</h2>
+            <p class="text-center mb-4">共 12+ 小時的內容，可點此看<a href="https://python-tutorial-workshop.github.io/2025/" target="_blank">講義總覽</a>，或是點擊以下連結進入各章節的講義。</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="list-group chapter-list">
+                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/00_intro.ipynb" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>00. 程式 與 Python 簡介</span>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/01_basicObject_IO.ipynb" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>01. 常見物件與輸入輸出</span>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/02_conditional.ipynb" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>02. 判斷式</span>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/03_list.ipynb" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>03. 串列</span>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/04_loop.ipynb" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>04. 迴圈</span>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/05_dictionary.ipynb" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>05. 字典</span>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/06_onlinejudge_doc.ipynb" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>06. Online Judge & 相關查詢資源</span>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/07_applications.ipynb" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>07. 應用</span>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/08_resources.ipynb" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>08. 學習資源</span>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/99_chatgpt.ipynb" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>Appendix - 學習夥伴 ChatGPT</span>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h2 class="mb-4" style="color: var(--primary-color);">運作方式與理念</h2>
+                    <p>這份教材的初衷是為了幫助更多女性可以在 Python 社群中成為主動的參與者與領導者，讓講師透過培訓機制，不需自行編撰教材，可以專注在分享與成長。
+
+                    <br><br>
+                    我們很在乎入門活動的內容的品質，
+                    因為對於完全沒有相關知識的初學者而言，講師講述的一言一語都有可能被奉為圭臬。
+                    所以從教材準備到講授，我們都會很嚴格的把關，講者從面試經過培訓試教通過，才能講授入門工作坊。</p>
+                    
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team working" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+        
+        <div id="achievements" class="stats-section">
             <div class="container">
-                <div class="row">
-                    <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
-                        <h1>Python 入門工作坊</h1>
-                        <h1>利用一個週末建立 Python 基礎</h1>
-                        <p>從零開始，透過大量實務範例與練習，有講師及 AI 學習夥伴的即時協助，<br>
-讓你實際動手加深程式邏輯的基礎概念，體驗更多 Python 的應用！<br>沒有程式經驗也不用擔心，而有基礎的更可以熟悉這些知識語法如何實踐～</p>
-						<a href="#activity" class="main-button-slider">參加工作坊&nbsp;→</a>
+                <div class="row text-center">
+                    <div class="col-6 col-md-3 mb-3 mb-md-0">
+                        <div class="stat-number">18</div>
+                        <div>講師</div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-3 mb-md-0">
+                        <div class="stat-number">451</div>
+                        <div>學生</div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-number">33</div>
+                        <div>場次</div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-number">3</div>
+                        <div>跨縣市足跡</div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- ***** Header Text End ***** -->
-    </div>
-    <!-- ***** Welcome Area End ***** -->
+    </section>
 
-    <!-- ***** Features Small Start ***** -->
-    <section class="section home-feature">
+    <section id="reviews" class="bg-light">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
-                            <div class="features-small-item">
-                                <div class="icon">
-                                    <i><img src="assets/images/featured-item-01.png" alt=""></i>
+            <h2 class="section-title">學員回饋</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-3">
+                        <div class="card-body">
+                            <p class="card-text text-muted">"我很喜歡這次的活動！雖然應用比較難，因為同時要處理的程式碼的量與函式也變多了；但是講師很實務導向的與我們分析及帶我們操作這些現在的應用真的覺得很驚訝，這也是我覺得在學校我比較不會接觸到的部分，所以覺得收穫滿滿，即使基礎仍然薄弱，但看到主辦那麼用心的為我們準備眾多學習資源，就覺得十分開心及感謝，往後也會繼續努力的、與身邊朋友宣傳的~~"</p>
+                            <!-- <div class="d-flex align-items-center mt-3">
+                                <div class="bg-secondary rounded-circle text-white d-flex justify-content-center align-items-center" style="width:40px; height:40px;">A</div>
+                                <div class="ms-3 fw-bold">Amy (行銷人員)</div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-3">
+                        <div class="card-body">
+                            <p class="card-text text-muted">"非常感謝你們辦那麼好的活動，我覺得內容非常充實，講師們也非常細心又專業，能夠針對不同邏輯的同學用不同的解題方式去講解，很令人感動～～ 氣氛很輕鬆，對於一個完全沒有接觸過任何程式語言的人而言，不會感覺到有壓力，或是覺得太過跟不上。"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-3">
+                        <div class="card-body">
+                            <p class="card-text text-muted">"感謝講師和助教！當自己看講義卡關，助教可以聽懂我的問題太厲害，能轉達請講師解說，而講師說明又更精練好懂，簡直是魔法師和魔法大師，太感謝！"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">常見問題 FAQ</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="accordion" id="accordionFAQ">
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Q1: 現在 Vibe Coding 正夯，為什麼還要從基礎開始學？
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    現在 AI 工具越來越強大，確實能快速產出程式，但有個前提<strong>「你得要知道自己要什麼，並能判斷結果是否正確」</strong>。
+                                    <br>
+                                    這個工作坊除了學習 Python 基礎，讓你看得懂 AI 工具的產出內容，知道程式該怎麼修之外；
+                                    <br>
+                                    也透過大量的實務練習的解題過程，讓你知道怎麼一步步拆解需求，能更清楚對 AI 下指令。
+                                    <br>
+                                    讓你真的能「用 AI 寫程式」，不是「被 AI 寫程式」。
                                 </div>
-                                <h5 class="features-title">實務範例與練習</h5>
-                                <p>講義的內容與練習題都與實務相關，跳脫枯燥的語法，認識生活中的科技服務是如何用程式實作的。透過練習題動手，加深新知識觀念應用。</p>
                             </div>
                         </div>
-                        <!-- ***** Features Small Item End ***** -->
 
-                        <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
-                            <div class="features-small-item">
-                                <div class="icon">
-                                    <i><img src="assets/images/featured-item-01.png" alt=""></i>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Q2: 為什麼沒有函式、類別繼承、除錯等內容？
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    這個工作坊希望的是透過一個週末的時間，成為引領大家進入 Python 世界的角色。
+                                    <br>
+                                    所以比起學習更多的語法，我們安排體驗 Python 的各種應用，引起大家興趣建立未來更深入學習 Python 的動機。
+
+
                                 </div>
-                                <h5 class="features-title">講師即時協助</h5>
-                                <p>擺脫線上課程一個人學習的孤獨及卡關無人可詢問的狀況，我們有經過扎實培訓的講師，在工作坊的過程中及時給予各種幫助。</p>
                             </div>
                         </div>
-                        <!-- ***** Features Small Item End ***** -->
 
-                        <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
-                            <div class="features-small-item">
-                                <div class="icon">
-                                    <i><img src="assets/images/featured-item-01.png" alt=""></i>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Q3: 有沒有錄影或是線上參與的方式呢？
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    工作坊其中一個特點就是講師能即時協助大家，線上的互動方式並不是那麼的良好，因此目前此工作坊都以線下實體活動為主，也沒有規劃錄影或直播等方式。
                                 </div>
-                                <h5 class="features-title">AI 學習夥伴</h5>
-                                <p>學會運用 ChatGPT，成為你 24 小時不間斷的學習夥伴。讓你理解如何與 AI 對話，請它協助你引導你完成練習題、理解程式概念。</p>
                             </div>
                         </div>
-                        <!-- ***** Features Small Item End ***** -->
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ***** Features Small End ***** -->
 
-    <!-- ***** Project Content Start ***** -->
-    <section class="mini" id="project-content">
-        <div class="mini-content">
-            <div class="container">
-                <div class="row">
-                    <div class="offset-lg-3 col-lg-6">
-                        <div class="info">
-                            <h1>工作坊內容</h1>
-                            <p>共 12+ 小時的內容，可以分成四場在1~2個週末，<br>讓大家能對 Python 有基礎的了解與提供未來學習的機會。<br><a href="https://python-tutorial-workshop.github.io/2025/" target="blank" style="color:#FFD43B
-">講義連結</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ***** Mini Box Start ***** -->
-                <div class="row">
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/00_intro.ipynb" target="blank" class="mini-box">
-                            <i><img src="assets/images/list.png" alt=""></i>
-                            <strong>簡介</strong>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/01_basicObject_IO.ipynb" target="blank" class="mini-box">
-                            <i><img src="assets/images/list.png" alt=""></i>
-                            <strong>常見物件</strong>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/02_conditional.ipynb" target="blank" class="mini-box">
-                            <i><img src="assets/images/list.png" alt=""></i>
-                            <strong>判斷式</strong>
-                        </a>
-                    </div>
-                
-                
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/03_list.ipynb" target="blank" class="mini-box">
-                            <i><img src="assets/images/list.png" alt=""></i>
-                            <strong>串列</strong>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/04_loop.ipynb" target="blank" class="mini-box">
-                            <i><img src="assets/images/list.png" alt=""></i>
-                            <strong>迴圈</strong>
-                        </a>
-                    </div>
-                
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/05_dictionary.ipynb" target="blank" class="mini-box">
-                            <i><img src="assets/images/list.png" alt=""></i>
-                            <strong>字典</strong>
-                        </a>
-                    </div>
-                     <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/06_onlinejudge_doc.ipynb" target="blank" class="mini-box">
-                            <i><img src="assets/images/list.png" alt=""></i>
-                            <strong>Online Judge</strong>
-                        </a>
-                    </div>
-                
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/07_applications.ipynb" target="blank" class="mini-box">
-                            <i><img src="assets/images/list.png" alt=""></i>
-                            <strong>應用</strong>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/99_chatgpt.ipynb" target="blank" class="mini-box">
-                            <i><img src="assets/images/list.png" alt=""></i>
-                            <strong>AI 學習夥伴</strong>                            
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="https://colab.research.google.com/github/Python-Tutorial-Workshop/2025/blob/master/08_resources.ipynb" class="mini-box">
-                            <i><img src="assets/images/list.png" alt=""></i>
-                            <strong>學習資源</strong>
-                        </a>
-                    </div>
-                </div>
-                <!-- ***** Mini Box End ***** -->
-            </div>
-        </div>
-    </section>
-    <!-- ***** Project Content End ***** -->
-
-    <!-- ***** Project Execution Start ***** -->
-    <section class="section" id="execution">
+    <section id="events" class="bg-light">
         <div class="container">
-            <!-- ***** Section Title Start ***** -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="center-heading">
-                        <h2 class="section-title">運作方式</h2>
-                    </div>
-           
-                    <div class="center-text">
-                        <p>這份教材的初衷是為了幫助更多女性可以在 Python 社群中成為主動的參與者與領導者，<br>因此與台灣相關的 PyLadies 社群：<a href="https://kaohsiung.pyladies.com/" target="blank">PyLadies Kaohsiung</a>, <a href="https://tw.pyladies.com/" target="blank">PyLadies Taiwan</a>合作培訓不少講師。<br>也曾與<a href="https://www.ait.org.tw/zhtw/education-exchanges-zhtw/american-spaces-zhtw/" target="blank">美國在台協會-美國資料中心</a>、<a href="https://www.facebook.com/LoveInCoding" target="blank">WTM 女高中生資訊營</a>合作舉辦不少場活動。
-
-                        <p>我們很在乎活動的品質，尤其是入門的相關內容，<br>因為對於完全沒有相關知識的初學者而言，講師講述的一言一語都有可能被奉為圭臬，<br>所以從教材準備到講授，我們都會很嚴格的把關，講者從面試經過培訓試教通過，才能講授入門工作坊。</p>
-
-                        <p>歡迎關注<a href="#activity">合作單位動向</a>參加相關活動，或與此<a href="mailto:colab@marsw.tw">專案負責人</a>接洽。</p>
+            <h2 class="section-title">近期活動 & 合作夥伴</h2>
+            
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <h4 class="text-center mb-4">近期活動</h4>
+                    <div class="rss-container text-center bg-white p-3 rounded shadow-sm">
+                        <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="176098/"></script>
                     </div>
                 </div>
             </div>
-            <!-- ***** Section Title End ***** -->
 
-        </div>
-    </section>
-    <!-- ***** Project Execution End ***** -->
-        <!-- ***** Counter Parallax Start ***** -->
-    <section class="counter">
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-bottom">
-                            <strong>31</strong>
-                            <span>活動</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-top">
-                            <strong>430</strong>
-                            <span>學員</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-bottom">
-                            <strong>17</strong>
-                            <span>講師</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item">
-                            <strong>3</strong>
-                            <span>城市</span>
-                        </div>
+            <div class="row text-center">
+                <div class="col-12">
+                    <h4 class="mb-3">歷年合作夥伴</h4>
+                    <div class="d-flex justify-content-center flex-wrap gap-3">
+                        <div class="bg-white border p-2 shadow-sm rounded"><a href="https://kaohsiung.pyladies.com/" target="_blank" style="color: var(--primary-color);">PyLadies Kaohsiung</a></div>
+                        <div class="bg-white border p-2 shadow-sm rounded"><a href="https://www.ait.org.tw/zhtw/education-exchanges-zhtw/american-spaces-zhtw/" target="_blank" style="color: var(--primary-color);">美國在台協會-美國資料中心</a></div>
+                        <div class="bg-white border p-2 shadow-sm rounded"><a href="https://tw.pyladies.com/" target="_blank" style="color: var(--primary-color);">PyLadies Taiwan</a></div>
+                        <div class="bg-white border p-2 shadow-sm rounded"><a href="https://www.facebook.com/LoveInCoding" target="_blank" style="color: var(--primary-color);">WTM 女高中生資訊營</a></div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
-    <!-- ***** Counter Parallax End ***** --> 
-    
-    <!-- ***** Testimonials Start ***** -->
-    <section class="section" id="testimonials">
+
+    <footer class="bg-dark text-white text-center py-4">
         <div class="container">
-            <!-- ***** Section Title Start ***** -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="center-heading">
-                        <h2 class="section-title">What do they say?</h2>
-                    </div>
-                </div>
-                <div class="offset-lg-3 col-lg-6">
-                    <div class="center-text">
-                        <p>學員的回饋一直都是我們成長的動力</p>
-                    </div>
-                </div>
-            </div>
-            <!-- ***** Section Title End ***** -->
-
-            <div class="row">
-                <!-- ***** Testimonials Item Start ***** -->
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="team-item">
-                        <div class="team-content">
-                            <i><img src="assets/images/testimonial-icon.png" alt=""></i>
-                            <p>我很喜歡這次的活動！雖然應用比較難，因為同時要處理的程式碼的量與函式也變多了；但是講師很實務導向的與我們分析及帶我們操作這些現在的應用真的覺得很驚訝，這也是我覺得在學校我比較不會接觸到的部分，所以覺得收穫滿滿，即使基礎仍然薄弱，但看到主辦那麼用心的為我們準備眾多學習資源，就覺得十分開心及感謝，往後也會繼續努力的、與身邊朋友宣傳的~~</p>
-                            <div class="team-info">
-                                <h3 class="user-name"></h3>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ***** Testimonials Item End ***** -->
-                
-                <!-- ***** Testimonials Item Start ***** -->
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="team-item">
-                        <div class="team-content">
-                            <i><img src="assets/images/testimonial-icon.png" alt=""></i>
-                            <p>非常感謝你們辦那麼好的活動，我覺得內容非常充實，講師們也非常細心又專業，能夠針對不同邏輯的同學用不同的解題方式去講解，很令人感動～～
-氣氛很輕鬆，對於一個完全沒有接觸過任何程式語言的人而言，不會感覺到有壓力，或是覺得太過跟不上。</p>
-                            <div class="team-info">
-                                <h3 class="user-name"></h3>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ***** Testimonials Item End ***** -->
-                
-                <!-- ***** Testimonials Item Start ***** -->
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="team-item">
-                        <div class="team-content">
-                            <i><img src="assets/images/testimonial-icon.png" alt=""></i>
-                            <p>感謝講師和助教！當自己看講義卡關，助教可以聽懂我的問題太厲害，能轉達請講師解說，而講師說明又更精練好懂，簡直是魔法師和魔法大師，太感謝！</p>
-                            <div class="team-info">
-                                <h3 class="user-name"></h3>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ***** Testimonials Item End ***** -->
-            </div>
-        </div>
-    </section>
-    <!-- ***** Testimonials End ***** --> 
-
-    <!-- ***** FAQ ***** -->
-    <section class="section colored" id="contact-us">
-        <div class="container">
-            <!-- ***** Section Title Start ***** -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="center-heading">
-                        <h2 class="section-title">常見問題 FAQ</h2>
-                    </div>
-                    <div class="center-heading">
-                        <h5>現在 Vibe Coding 正夯，為什麼還要從基礎開始學？</h5>
-                    </div>
-                    <div class="center-text">
-                        <p style="padding-top:10px">現在 AI 工具越來越強大，確實能快速產出程式，但有個前提<br><b>「你得要知道自己要什麼，並能判斷結果是否正確」。</b><br>
-這個工作坊除了學習 Python 基礎，讓你看得懂 AI 工具的產出內容，知道程式該怎麼修之外；<br>也透過大量的實務練習的解題過程，讓你知道怎麼一步步拆解需求，能更清楚對 AI 下指令。<br>讓你真的能「用 AI 寫程式」，不是「被 AI 寫程式」。
-                    </div>
-
-                    <div class="center-heading">
-                        <h5>為什麼沒有函式、類別繼承、除錯等內容？</h5>
-                    </div>
-                    <div class="center-text">
-                        <p style="padding-top:10px">
-                        這個工作坊希望的是透過一個週末的時間，成為引領大家進入 Python 世界的角色。<br>所以比起學習更多的語法，我們安排體驗 Python 的各種應用，<br>引起大家興趣建立未來更深入學習 Python 的動機。
-                    </div>
-
-                    <div class="center-heading">
-                        <h5>有沒有錄影或是線上參與的方式呢？</h5>
-                    </div>
-                    <div class="center-text">
-                        <p style="padding-top:10px">
-                        工作坊其中一個特點就是講師能即時協助大家，<br>線上的互動方式並不是那麼的良好，因此目前此工作坊都以線下實體活動為主，<br>
-                        也沒有規劃錄影或直播等方式。<br>
-                    </div>
-                </div>
-                
-
-                
-            </div>
-        </div>
-    </section>
-    <!-- ***** FAQ End ***** -->
-
-    <!-- ***** Activity Start ***** -->
-    <section class="section" id="activity">
-        <div class="container">
-            <!-- ***** Section Title Start ***** -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="center-heading">
-                        <h2 class="section-title">合作單位 近期活動</h2>
-                    </div>
-                </div>
-            </div>
-            <!-- ***** Section Title End ***** -->
-
-            <!-- start feedwind code --> 
-            <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="176098/"></script> 
-            <!-- end feedwind code -->
-
-        </div>
-    </section>
-    <!-- ***** Activity End ***** --> 
-
-    <!-- ***** Footer Start ***** -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="copyright">Copyright &copy; 2018-2025 MarsW</p>
-                </div>
+            <p class="mb-0">Copyright © 2018-2025 MarsW</p>
+            <div class="mt-2">
+                <a href="mailto:colab@marsw.tw" class="text-white"><i class="far fa-envelope"></i></a>
             </div>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.querySelector('.navbar-custom');
+            const hero = document.querySelector('.hero-section');
+            
+            if (nav && hero) {
+                // 計算導覽列開始 "黏住" 的高度 (即 Hero 區塊的底部)
+                const navOffset = hero.offsetHeight; 
 
-    <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    
-    <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
-
-  </body>
+                window.addEventListener('scroll', function() {
+                    // 當垂直捲軸位置大於或等於 Hero 區塊的高度時，導覽列就會固定在頂部
+                    if (window.scrollY >= navOffset) {
+                        // 確保只新增一次 class
+                        if (!nav.classList.contains('is-stuck')) {
+                            nav.classList.add('is-stuck');
+                        }
+                    } else {
+                        // 當捲回 Hero 區塊時，移除 class
+                        if (nav.classList.contains('is-stuck')) {
+                            nav.classList.remove('is-stuck');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
 </html>
